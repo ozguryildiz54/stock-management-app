@@ -1,6 +1,6 @@
 # Stock Management App
 
-Full-stack inventory and sales management application built during the **Clarusway FS19-TR Full Stack Bootcamp** (February 2025 – October 2025) and now maintained as a portfolio piece.
+Full-stack inventory and sales management application — Node.js / Express REST API with MongoDB, paired with a Vite + React + Redux Toolkit dashboard.
 
 ## ✨ Features
 
@@ -57,10 +57,6 @@ pnpm dev
 ```
 
 API docs available at `http://localhost:8000/documents/swagger`.
-
-## 📜 Attribution
-
-Originally based on the Stock Management App capstone from the Clarusway FS19-TR Full Stack Development Bootcamp. Refactored, customized, and maintained by **Ozgur Yildiz** as a portfolio piece.
 
 ## 📫 Contact
 
