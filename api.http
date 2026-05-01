@@ -1,0 +1,102 @@
+@accessToken = Bearer {{login.response.body.bearer.access}}
+@refreshToken = {{login.response.body.bearer.refresh}}
+@baseUrl = http://localhost:8000/
+
+###
+
+# @name login
+post {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+    "username":"admin",
+    "password":"aA?123456"
+}
+
+### 
+
+# @name refreshToken
+post {{baseUrl}}/auth/refresh
+Content-Type: application/json
+
+{   
+    "refresh":" {{refreshToken}}"
+}
+
+###
+
+# @name users
+get {{baseUrl}}/users/
+Content-Type: application/json
+# Authorization: {{accessToken}}
+
+{
+    "username": "test5",
+    "password": "aA12345*",
+    "email": "test5@gmail.com",
+    "firstName": "Test5",
+    "lastName": "Test5"
+}
+
+###
+
+# @name tokens
+get {{baseUrl}}/tokens/
+Content-Type: application/json
+
+
+###
+
+# @name brands
+get {{baseUrl}}/brands
+Content-Type: application/json
+Authorization: {{accessToken}}
+
+###
+
+# @name categories
+get {{baseUrl}}/categories
+Content-Type: application/json
+Authorization: {{accessToken}}
+
+###
+
+# @name firms
+get {{baseUrl}}/firms
+Content-Type: application/json
+Authorization: {{accessToken}}
+
+###
+
+# @name products
+get {{baseUrl}}/products/65343222b67e9681f937f427
+Content-Type: application/json
+Authorization: {{accessToken}}
+
+###
+
+# @name purchases
+get {{baseUrl}}/purchases/68d437c73122ff6ba7385154
+Content-Type: application/json
+Authorization: {{accessToken}}
+# "productId": "65343222b67e9681f937f427",
+# "firmId": "65343222b67e9681f937f305",
+# "price": 900
+
+{
+    "quantity": 
+}
+
+###
+
+# @name sales
+put {{baseUrl}}/sales/68d442c18f2707c5b0b7fe28
+Content-Type: application/json
+Authorization: {{accessToken}}
+
+    # "productId": "65343222b67e9681f937f427",
+    # "price": 1200,
+{
+    "quantity": 40
+}
+
