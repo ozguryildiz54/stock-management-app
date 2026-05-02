@@ -12,19 +12,22 @@ const path = require("node:path");
 const now = new Date();
 const today = now.toISOString().split("T")[0];
 
-const rootDirectory = path.resolve(__dirname, "../..");
-const logDirectory = path.join(rootDirectory, "logs");
+const isServerless = !!(process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME);
 
-if (!fs.existsSync(logDirectory)) {
-  console.log("Logs folder has been created ");
-  fs.mkdirSync(logDirectory, { recursive: true });
-} else console.log("Logs folder is exist");
+if (isServerless) {
+  module.exports = morgan("combined");
+} else {
+  const rootDirectory = path.resolve(__dirname, "../..");
+  const logDirectory = path.join(rootDirectory, "logs");
 
-const logStream = fs.createWriteStream(
-  path.join(logDirectory, `${today}.log`),
-  { flags: "a+" },
-);
+  if (!fs.existsSync(logDirectory)) {
+    fs.mkdirSync(logDirectory, { recursive: true });
+  }
 
-module.exports = morgan("combined", {
-  stream: logStream,
-});
+  const logStream = fs.createWriteStream(
+    path.join(logDirectory, `${today}.log`),
+    { flags: "a+" },
+  );
+
+  module.exports = morgan("combined", { stream: logStream });
+}

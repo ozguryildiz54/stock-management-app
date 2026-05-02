@@ -30,7 +30,11 @@ app.use(express.json());
 
 // Cors:
 const corsOptions = {
-  origin: ["http://localhost:5173"],
+  origin: [
+    "http://localhost:5173",
+    "https://stock-client-brown.vercel.app",
+    /\.vercel\.app$/,
+  ],
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
