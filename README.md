@@ -2,8 +2,8 @@
 
 Full-stack inventory and sales management application — Node.js / Express REST API with MongoDB, paired with a Vite + React + Redux Toolkit dashboard.
 
-> 🔗 **Live Demo:** https://stock-client-brown.vercel.app
-> 📡 **API:** https://stock-api-wine.vercel.app
+> 🔗 **Live Demo:** https://ozguryildiz-stock.vercel.app
+> 📡 **API:** https://ozguryildiz-stock-api.vercel.app
 > 🔑 **Test credentials:** `demo@demo.com / Demo1234!`
 
 ## 🚀 Deploy in 5 Minutes
