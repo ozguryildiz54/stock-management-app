@@ -1,9 +1,9 @@
-import { Button, CircularProgress } from "@mui/material";
+import { Alert, Button, CircularProgress } from "@mui/material";
 import Box from "@mui/material/Box"
 import TextField from "@mui/material/TextField"
 import { Form } from "formik"
 import { useSelector } from "react-redux"
-import { object, string } from "yup"; //! bu şekilde de direk olarak metodları alıp yine validasyon şemamızı oluşturabiliriz. 
+import { object, string } from "yup"; //! bu şekilde de direk olarak metodları alıp yine validasyon şemamızı oluşturabiliriz.
 
 export const loginScheme = object({
   email: string()
@@ -13,11 +13,25 @@ export const loginScheme = object({
     .required("password zorunludur")
 })
 
-const LoginForm = ({ values, handleChange, errors, touched, handleBlur }) => {
+const LoginForm = ({ values, handleChange, errors, touched, handleBlur, setFieldValue }) => {
   const { loading } = useSelector(state => state.auth);// storeda yaptığımız fetchStart işlemini kullanmış olduk.
+
+  const fillDemo = () => {
+    setFieldValue("email", "demo@demo.com");
+    setFieldValue("password", "Demo1234!");
+  };
+
   return (
     <Form>
       <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+        <Alert severity="info" sx={{ fontSize: 14 }}>
+          <strong>Demo Account</strong><br />
+          Email: <code>demo@demo.com</code><br />
+          Password: <code>Demo1234!</code>
+          <Button onClick={fillDemo} size="small" sx={{ mt: 1, display: "block" }} variant="outlined">
+            Fill demo credentials
+          </Button>
+        </Alert>
         <TextField
           label="Email"
           name="email"
