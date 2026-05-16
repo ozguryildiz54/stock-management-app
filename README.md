@@ -1,6 +1,6 @@
 # Stock Management App
 
-Full-stack inventory and sales management application — Node.js / Express REST API with MongoDB, paired with a Vite + React + Redux Toolkit dashboard.
+Full-stack inventory and sales management application. A Node.js / Express REST API with MongoDB, paired with a Vite + React + Redux Toolkit dashboard.
 
 > 🔗 **Live Demo:** https://ozguryildiz-stock.vercel.app
 > 📡 **API:** https://ozguryildiz-stock-api.vercel.app
