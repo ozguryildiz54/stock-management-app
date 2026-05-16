@@ -10,8 +10,12 @@
     "setup-production": "pnpm install && pnpm --dir client install --prod=false && pnpm --dir client run build"
   },
   "keywords": [],
-  "author": "CourseName",
-  "license": "ISC Licence",
+  "author": "Ozgur Yildiz",
+  "email": "ozguryildiz0@outlook.com",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  },
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",

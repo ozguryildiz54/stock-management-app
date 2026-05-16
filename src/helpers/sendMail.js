@@ -1,38 +1,25 @@
 "use strict"
-/* -------------------------------------------------------
-    | FULLSTACK TEAM | NODEJS / EXPRESS |
-------------------------------------------------------- */
-// node i nodemailer
-// sendMail(to:string, subject:string, message:string):
+// sendMail(to, subject, message)
 
 const nodemailer = require('nodemailer')
 
-module.exports = function (to, subject, message) {
+module.exports = function sendMail(to, subject, message) {
 
-    // Set Passive:
-    return true
+    // No-op when mail credentials are not configured.
+    if (!process.env.MAIL_USER || !process.env.MAIL_PASS) return
 
-    //? GoogleMail (gmail):
-    // Google -> AccountHome -> Security -> Two-Step-Verify -> App-Passwords
-    const mailSettings = {
-        service: 'Gmail',
-        user: 'username@gmail.com',
-        pass: 'password'
-    }
-
-    // Connect to mailServer:
     const transporter = nodemailer.createTransport({
-        service: mailSettings.service,
+        service: 'gmail',
         auth: {
-            user: mailSettings.user,
-            pass: mailSettings.pass,
-        }
+            user: process.env.MAIL_USER,
+            pass: process.env.MAIL_PASS,
+        },
     })
-    // SendMail:
+
     transporter.sendMail({
-        from: mailSettings.user,
-        to: to,
-        subject: subject,
+        from: process.env.MAIL_USER,
+        to,
+        subject,
         text: message,
         html: message,
     }, (error, info) => {

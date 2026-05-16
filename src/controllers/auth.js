@@ -1,7 +1,4 @@
 "use strict";
-/* -------------------------------------------------------
-    | FULLSTACK TEAM | NODEJS / EXPRESS |
-------------------------------------------------------- */
 
 const User = require("../models/user");
 const Token = require("../models/token");
@@ -27,8 +24,8 @@ module.exports = {
 
     const { username, email, password } = req.body;
 
-    if (!(username || email) && password)
-      throw new CustomError("Please enter usurname/email and password.", 400);
+    if (!((username || email) && password))
+      throw new CustomError("Please enter username/email and password.", 400);
 
     const user = await User.findOne({ $or: [{ email }, { username }] }).lean();
 
@@ -50,11 +47,7 @@ module.exports = {
     }
 
     // Json Web Token
-    const {
-      _id,
-      password: { userPass },
-      ...accessPayload
-    } = user;
+    const { _id, password: _pw, ...accessPayload } = user;
 
     const access = jwt.sign({ _id, ...accessPayload }, process.env.ACCESS_KEY, {
       expiresIn: "30m",
@@ -134,7 +127,7 @@ module.exports = {
 
     res.status(200).send({
       error: false,
-      message: result.deletedCount
+      message: result && result.deletedCount
         ? "User logout success and token deleted."
         : "User logout success You can delete token from your session.",
     });

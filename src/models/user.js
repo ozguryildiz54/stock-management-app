@@ -1,7 +1,4 @@
 "use strict"
-/* -------------------------------------------------------
-    | FULLSTACK TEAM | NODEJS / EXPRESS |
-------------------------------------------------------- */
 const { mongoose: { Schema, model } } = require('../configs/dbConnection');
 const passwordEncrypt = require('../helpers/passwordEncrypt');
 const CustomError = require('../helpers/customError');

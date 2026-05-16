@@ -1,7 +1,4 @@
 "use strict";
-/* -------------------------------------------------------
-    | FULLSTACK TEAM | NODEJS / EXPRESS |
-------------------------------------------------------- */
 
 const Purchase = require("../models/purchase");
 const CustomError = require("../helpers/customError");

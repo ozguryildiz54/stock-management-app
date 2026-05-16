@@ -1,7 +1,4 @@
 "use strict"
-/* -------------------------------------------------------
-| FULLSTACK TEAM | NODEJS / EXPRESS |
-------------------------------------------------------- */
 // sync():
 const { users, brands, categories, firms, products, purchases, sales } = require('./dummyData');
 

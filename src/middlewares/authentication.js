@@ -1,7 +1,4 @@
 "use strict";
-/* -------------------------------------------------------
-| FULLSTACK TEAM | NODEJS / EXPRESS |
-------------------------------------------------------- */
 // app.use(authentication):
 const Token = require("../models/token");
 const jwt = require("jsonwebtoken");
